@@ -1,0 +1,5 @@
+- hosts: all
+  user: root
+  
+  roles:
+   - sbdb19c_create 
