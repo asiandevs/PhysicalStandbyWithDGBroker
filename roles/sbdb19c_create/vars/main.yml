@@ -4,7 +4,7 @@ oracle_install_group:            "oinstall"
 root_directory:                  "/u01"
 scripts_directory:               "{{ root_directory }}/app/scripts"
 base_directory:                  "{{ root_directory }}/app/oracle"
-oracle_home:                     "{{ base_directory }}/product/19.2.0/db100"
+oracle_home:                     "{{ base_directory }}/product/19.3.0/db100"
 prihost:                         ora-x1 
 prdbunq_name:                    eaymp  
 sbhost:                          ora-x2 

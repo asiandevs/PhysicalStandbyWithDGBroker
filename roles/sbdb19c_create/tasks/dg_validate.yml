@@ -30,6 +30,12 @@
         become: yes
         become_user: oracle
         when: inventory_hostname in groups['ora-x1']
+        shell: sleep 30
+
+      - name: "Execute dgmgrl show configuration command"
+        become: yes
+        become_user: oracle
+        when: inventory_hostname in groups['ora-x1']
         shell: "{{ oracle_home }}/bin/dgmgrl / 'show database {{ oracle_sbsid }}' |grep 'Lag'|sort |awk '{print $1 $2 $3  $4}'"
         register: dgmgrl_status
         environment:
@@ -40,7 +46,4 @@
         when: inventory_hostname in groups['ora-x1']
         debug: msg="{{ item }}"
         with_items: "{{ dgmgrl_status.stdout_lines|list }}"
-
-
-
 
