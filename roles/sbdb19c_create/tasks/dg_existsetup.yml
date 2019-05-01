@@ -1,9 +1,0 @@
-      - name: Get any DG setup exist for the target Standby database
-        remote_user: "{{ root_user }}"
-        become: yes
-        become_user: oracle
-        when: inventory_hostname in groups['ora-x1']
-        shell: export ORACLE_HOME={{ oracle_home }}; export ORACLE_SID={{ oracle_prsid }}; export PATH=$PATH:$ORACLE_HOME/bin; echo "@/u01/stage/chkexistdg.sql;" | {{ oracle_home }}/bin/sqlplus / as sysdba
-        register: result
-        failed_when: oracle_sbsid in result.stdout_lines
-
