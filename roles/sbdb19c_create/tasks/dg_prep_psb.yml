@@ -1,3 +1,19 @@
+- name: Get DG details
+  remote_user: "{{ root_user }}"
+  become: yes
+  become_user: oracle
+  when: inventory_hostname in groups['ora-x1']
+  shell: export ORACLE_HOME={{ oracle_home }}; export ORACLE_SID={{ oracle_sbsid }}; export PATH=$PATH:$ORACLE_HOME/bin; echo "@/u01/stage/chkexistdg.sql;" | {{ oracle_home }}/bin/sqlplus / as sysdba
+  register: result
+  failed_when: oracle_sbsid in result.stdout_lines
+
+- name: Create LogFile  Directory
+  file:
+   path: /tmp/tstgrade/{{ oracle_sbsid }}
+   state: directory
+   owner: "{{ oracle_user }}"
+   group: "{{ oracle_install_group }}"
+
 - name: Create_standbyDB | create required directories on standby database server
   when: inventory_hostname in groups['ora-x2']
   file:
