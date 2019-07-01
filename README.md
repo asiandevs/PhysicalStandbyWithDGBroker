@@ -8,7 +8,7 @@ This article describes the Oracle Database 19c -Create a Physical Standby Databa
 Setup: 
 OS: OEL 7.5 
 Ansible: ansible 2.7.6
-Database Version: Oracle 19.2 Linux64
+Database Version: Oracle 19.3 Linux64
 
 Oracle DBA - Automation with Ansible (Create a Physical Standby Database and Data Guard Broker Setup)
 
